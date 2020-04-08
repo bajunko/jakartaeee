@@ -13,8 +13,10 @@ public class CustomInMemoryIdentityStore implements IdentityStore {
 
     @Override
     public CredentialValidationResult validate(Credential credential) {
+    	
 
         UsernamePasswordCredential login = (UsernamePasswordCredential) credential;
+        
 
         if (login.getCaller().equals("admin@mail.com") && login.getPasswordAsString().equals("ADMIN1234")) {
             return new CredentialValidationResult("admin", new HashSet<>(Arrays.asList("ADMIN")));

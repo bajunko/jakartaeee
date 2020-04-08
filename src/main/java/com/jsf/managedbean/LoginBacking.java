@@ -61,7 +61,8 @@ public class LoginBacking {
         return securityContext.authenticate(
                 (HttpServletRequest) externalContext.getRequest(),
                 (HttpServletResponse) externalContext.getResponse(),
-                AuthenticationParameters.withParams().credential(new UsernamePasswordCredential(email, password))
+                AuthenticationParameters.withParams().credential(new UsernamePasswordCredential(email, password)
+                		)
         );
     }
 
