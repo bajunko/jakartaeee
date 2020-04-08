@@ -1,0 +1,21 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+                xmlns:="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:param name="title" value="Home"/>   
+    <ui:define name="content">
+        <h1>#{greetingController.message}</h1>
+    </ui:define>
+    <h:form id="form">  
+    <h3 style="margin-top:0">Basic</h3>
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputText
+                    value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding. 
+                    His beloved son Michael has just come home from the war, but does not intend to become part of his father's business.
+                    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect, 
+                    but given to ruthless violence whenever anything stands against the good of the family." />
+            </h:panelGrid>
+        </h:form>    
+</ui:composition>

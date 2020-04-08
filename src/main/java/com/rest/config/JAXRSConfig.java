@@ -1,8 +1,8 @@
-package com.example;
+package com.rest.config;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 @ApplicationPath("/api")
-public class JaxrsActivator extends Application {
+public class JAXRSConfig extends Application {
 }

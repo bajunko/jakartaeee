@@ -1,9 +1,10 @@
 package com.example.it;
 
-import com.example.GreetingMessage;
-import com.example.GreetingResource;
-import com.example.GreetingService;
-import com.example.JaxrsActivator;
+import com.rest.config.JAXRSConfig;
+import com.rest.impl.GreetingMessage;
+import com.rest.impl.GreetingResource;
+import com.rest.impl.GreetingService;
+
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.test.api.ArquillianResource;
@@ -37,7 +38,7 @@ public class GreetingResourceTest {
         return ShrinkWrap.create(WebArchive.class)
                 .addClass(GreetingMessage.class)
                 .addClass(GreetingService.class)
-                .addClasses(GreetingResource.class, JaxrsActivator.class)
+                .addClasses(GreetingResource.class, JAXRSConfig.class)
                 // Enable CDI
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }

@@ -1,4 +1,4 @@
-package com.example;
+package com.rest.impl;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
