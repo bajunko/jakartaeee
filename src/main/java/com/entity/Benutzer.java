@@ -15,12 +15,14 @@ import javax.validation.constraints.Size;
 @NamedQuery(name = Benutzer.FIND_ALL_BENUTZER, query = "select t from Benutzer  t order by t.name") //select * from TodoUserTable...
 @NamedQuery(name = Benutzer.FIND_BENUTZER_BY_ID, query = "select t from Benutzer t where t.id = :id")
 @NamedQuery(name = Benutzer.FIND_BENUTZER_BY_NAME, query = "select t from Benutzer t where t.name like :name ")
+@NamedQuery(name = Benutzer.FIND_BENUTZER_BY_NAME_AND_PASSWORT, query = "select t from Benutzer t where t.name like :name and t.passwort = :passwort ")
 @NamedQuery(name = Benutzer.DELETE_BENUTZER_BY_ID, query = "delete from Benutzer t where t.id = :id ")
 public class Benutzer extends AbstractEntity {
 	
     public static final String FIND_ALL_BENUTZER = "Benutzer.findAll";
     public static final String FIND_BENUTZER_BY_ID = "Benutzer.findById";
     public static final String FIND_BENUTZER_BY_NAME = "Benutzer.findByName";
+    public static final String FIND_BENUTZER_BY_NAME_AND_PASSWORT = "Benutzer.findByNameAndPasswort";
     public static final String DELETE_BENUTZER_BY_ID = "Benutzer.deleteById";
 
 	/**

@@ -16,23 +16,22 @@
             <div class="ui-g">
                 <div class="ui-g-4"/>
                 <div class="ui-g-4">
-                    <h3>Login</h3>
+                    <h3>Erstellen Benutzer</h3>
 
-                    <h:form id="login">
+                    <h:form id="cerateForm">
                         <p:messages id="messages" globalOnly="true"/>
 
                         <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
 
-                            <p:outputLabel for="email" value="E-Mail"/>
-                            <p:inputText id="email" value="#{loginBacking.email}"/>
-                            <p:message for="email"/>
+                            <p:outputLabel for="benutzername" value="Benutzername"/>
+                            <p:inputText id="benutzername" value="#{createBean.benutzername}"/>
+                            <p:message for="benutzername"/>
 
-                            <p:outputLabel for="password" value="Password"/>
-                            <p:inputText type="password" id="password" value="#{loginBacking.password}"/>
-                            <p:message for="password"/>
+                            <p:outputLabel for="passwort" value="Passwort"/>
+                            <p:inputText type="password" id="passwort" value="#{createBean.passwort}"/>
+                            <p:message for="passwort"/>
 
-                            <p:commandButton id="submit" update="@form" value="Login" action="#{loginBacking.submit}"/>
-                            <p:commandButton id="erstellen" process="@this" value="Erstellen" action="#{createBean.createPage}" />
+                            <p:commandButton id="cerate" update="cerateForm:cerate" value="Cerate" action="#{createBean.create}"/>
                         </h:panelGrid>
                     </h:form>
                 </div>

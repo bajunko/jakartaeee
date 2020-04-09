@@ -1,5 +1,6 @@
 package com.jsf.managedbean;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
@@ -15,18 +16,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import com.entity.Benutzer;
+import com.service.QueryService;
+
 import java.io.IOException;
 
 @Named
 @RequestScoped
 public class LoginBacking {
+	
 
     @NotEmpty
     @Size(min = 8, message = "Password must have at least 8 characters")
     private String password;
 
     @NotEmpty
-    @Email(message = "Please provide a valid e-mail")
     private String email;
 
     @Inject
@@ -37,8 +42,10 @@ public class LoginBacking {
 
     @Inject
     private FacesContext facesContext;
+    
 
     public void submit() throws IOException {
+    	
 
         switch (continueAuthentication()) {
             case SEND_CONTINUE:

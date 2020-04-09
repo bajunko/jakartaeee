@@ -9,8 +9,26 @@
         <p:outputLabel>Welcome to the application!</p:outputLabel>
 
         <p>Logged-in as #{request.userPrincipal.name}</p>
+        
+        
+    <p:dataTable var="user" value="#{benutzerManagmentBean.benutzerList}">
+    <p:column headerText="Id">
+        <h:outputText value="#{user.id}" />
+    </p:column>
+ 
+    <p:column headerText="Name">
+        <h:outputText value="#{user.name}" />
+    </p:column>
+ 
+    <p:column headerText="Preveligt">
+        <h:outputText value="#{user.privilegt}" />
+    </p:column>
+ 
+</p:dataTable>
 
         <h:form>
+            <p:commandButton id="auflisten" update="@form" value="Login" action="#{loginBacking.submit}"/>
+            <p:commandButton id="erstellen" process="@this" value="Erstellen" action="#{createBean.createPage}" />
             <p:commandButton value="Logout" action="#{logoutBacking.submit}"/>
         </h:form>
     </h:body>

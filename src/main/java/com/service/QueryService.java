@@ -36,8 +36,6 @@ public class QueryService {
     
     
     public Benutzer findBenuztezrByName(String name) {
-        //TODO impl method body
-
 
         try {
         	
@@ -47,8 +45,18 @@ public class QueryService {
         } catch (NonUniqueResultException | NoResultException e) {
             return null;
         }
+    }
 
+    public Benutzer findBenuztezrByNameAndPasswort(String name, String passwort) {
 
+        try {
+        	
+            return entityManager.createNamedQuery(Benutzer.FIND_BENUTZER_BY_NAME_AND_PASSWORT, Benutzer.class)
+                    .setParameter("name", name).setParameter("passwort", passwort).getSingleResult();
+
+        } catch (NonUniqueResultException | NoResultException e) {
+            return null;
+        }
     }
 
 
