@@ -10,27 +10,44 @@
 
         <p>Logged-in as #{request.userPrincipal.name}</p>
         
-        
-    <p:dataTable var="user" value="#{benutzerManagmentBean.benutzerList}">
+    <h:form id="usersTable">
+    <p:dataTable id="tableBenuters" var="benutzer" value="#{benutzerManagmentBean.benutzerList}">
     <p:column headerText="Id">
-        <h:outputText value="#{user.id}" />
+        <h:outputText value="#{benutzer.id}" />
     </p:column>
  
     <p:column headerText="Name">
-        <h:outputText value="#{user.name}" />
+        <h:outputText value="#{benutzer.name}" />
     </p:column>
  
     <p:column headerText="Preveligt">
-        <h:outputText value="#{user.privilegt}" />
+        <h:outputText value="#{benutzer.privilegt}" />
     </p:column>
- 
+            <p:column style="width:32px;text-align: center">
+             <p:commandButton update="tableBenuters" oncomplete="PF('benutzerDialog').show()" icon="pi pi-" value="Löschen" title="Löschen">
+                <f:setPropertyActionListener value="#{benutzer.id}" target="#{benutzerManagmentBean.id}" />
+            </p:commandButton>
+        </p:column>
 </p:dataTable>
 
-        <h:form>
-            <p:commandButton id="auflisten" update="@form" value="Login" action="#{loginBacking.submit}"/>
+
+    
+     <p:commandButton id="auflisten" update="@form" value="Login" action="#{loginBacking.submit}"/>
             <p:commandButton id="erstellen" process="@this" value="Erstellen" action="#{createBean.createPage}" />
             <p:commandButton value="Logout" action="#{logoutBacking.submit}"/>
-        </h:form>
+</h:form>    
+
+     <p:dialog header="Benuter Info" widgetVar="benutzerDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="benutzerDetail" style="text-align:center;">
+            Jeste li sigurni da zelite izbrisati?
+            <p:commandButton value="Löschen"
+                             action="#{benutzerManagmentBean.deleteSelctedBenutzer(benutzer.id)}"
+                             update="usersTable" 
+                             oncomplete="PF('benutzerDialog').hide()">
+             
+            </p:commandButton>
+        </p:outputPanel>
+    </p:dialog>
     </h:body>
 </f:view>
 </html>

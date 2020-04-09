@@ -1,6 +1,7 @@
 package com.jsf.managedbean;
 
-import javax.annotation.PostConstruct;
+import java.io.IOException;
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.ExternalContext;
@@ -13,14 +14,8 @@ import javax.security.enterprise.authentication.mechanism.http.AuthenticationPar
 import javax.security.enterprise.credential.UsernamePasswordCredential;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-
-import com.entity.Benutzer;
-import com.service.QueryService;
-
-import java.io.IOException;
 
 @Named
 @RequestScoped
@@ -32,7 +27,7 @@ public class LoginBacking {
     private String password;
 
     @NotEmpty
-    private String email;
+    private String name;
 
     @Inject
     private SecurityContext securityContext;
@@ -68,7 +63,7 @@ public class LoginBacking {
         return securityContext.authenticate(
                 (HttpServletRequest) externalContext.getRequest(),
                 (HttpServletResponse) externalContext.getResponse(),
-                AuthenticationParameters.withParams().credential(new UsernamePasswordCredential(email, password)
+                AuthenticationParameters.withParams().credential(new UsernamePasswordCredential(name, password)
                 		)
         );
     }
@@ -81,11 +76,11 @@ public class LoginBacking {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+    public String getName() {
+        return name;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setName(String name) {
+        this.name = name;
     }
 }
