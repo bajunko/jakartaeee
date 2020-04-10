@@ -2,6 +2,7 @@ package com.jsf.security;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
 import javax.security.enterprise.credential.Credential;
 import javax.security.enterprise.credential.UsernamePasswordCredential;
@@ -49,19 +50,21 @@ public class CustomInMemoryIdentityStore implements IdentityStore {
         boolean autentciran = false;
         
      
-		
-    	  if (login.getCaller().equals(provjeri.getName()) && login.getPasswordAsString().equals(provjeri.getPasswort())) {
-    		  autentciran = true;
-	      }
+		if(provjeri != null) {
+			if (login.getCaller().equals(provjeri.getName()) && login.getPasswordAsString().equals(provjeri.getPasswort())) {
+	    		  autentciran = true;
+		      }
+		}
     	  
       
       if(autentciran) {
     	  benuterManagment.setBenuter(provjeri);
     	  return new CredentialValidationResult(provjeri.getName(), new HashSet<>(Arrays.asList("USER")));
       }else {
-    	  
-      }     return CredentialValidationResult.NOT_VALIDATED_RESULT;
-
+    	  new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login failed", null);
+    	  return CredentialValidationResult.NOT_VALIDATED_RESULT;
+      }     
+            
         
     }
 }

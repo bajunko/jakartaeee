@@ -24,14 +24,14 @@
                         <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
 
                             <p:outputLabel for="name" value="Benutzername"/>
-                            <p:inputText id="name" value="#{loginBacking.name}"/>
+                            <p:inputText id="name" value="#{loginBean.name}"/>
                             <p:message for="name"/>
 
                             <p:outputLabel for="password" value="Passwort"/>
-                            <p:inputText type="password" id="password" value="#{loginBacking.password}"/>
+                            <p:inputText type="password" id="password" value="#{loginBean.password}"/>
                             <p:message for="password"/>
 
-                            <p:commandButton id="submit" update="@form" value="Login" action="#{loginBacking.submit}"/>
+                            <p:commandButton id="submit" update="@form" value="Login" action="#{loginBean.submit}"/>
                             <p:commandButton id="erstellen" process="@this" value="Erstellen" action="#{createBean.createPage}" />
                         </h:panelGrid>
                     </h:form>

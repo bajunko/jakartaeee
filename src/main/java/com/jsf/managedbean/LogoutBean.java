@@ -6,7 +6,7 @@ import javax.inject.Named;
 
 @Named
 @RequestScoped
-public class LogoutBacking {
+public class LogoutBean {
 
     public String submit() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();

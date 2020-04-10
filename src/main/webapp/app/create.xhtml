@@ -30,6 +30,10 @@
                             <p:outputLabel for="passwort" value="Passwort"/>
                             <p:inputText type="password" id="passwort" value="#{createBean.passwort}"/>
                             <p:message for="passwort"/>
+                            
+                            <p:outputLabel for="privilegiert" value="Privilegiert"/>
+                            <p:selectBooleanCheckbox id="privilegiert" value="#{createBean.privilegt}" />
+                            <p:message for="privilegiert"/>                            
 
                             <p:commandButton id="cerate" update="cerateForm:cerate" value="Cerate" action="#{createBean.create}"/>
                         </h:panelGrid>

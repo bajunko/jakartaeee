@@ -59,7 +59,7 @@ public class CreateBean {
     	
     	ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
     	try {
-			context.redirect(context.getRequestContextPath() + "/create.xhtml");
+			context.redirect(context.getRequestContextPath() + "/app/create.xhtml");
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -71,7 +71,7 @@ public class CreateBean {
     	       Benutzer benutzer = new Benutzer();
     	       benutzer.setName(getBenutzername());	 
     	       benutzer.setPasswort(getPasswort());
-    	       benutzer.setPrivilegt(false);
+    	       benutzer.setPrivilegt(isPrivilegt());
 			persistenceService.saveBenutzer(benutzer);
     	      
 			// Ako je uspjeno kreiran ondnda odmah auteciramo

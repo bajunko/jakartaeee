@@ -19,7 +19,7 @@ import javax.validation.constraints.Size;
 
 @Named
 @RequestScoped
-public class LoginBacking {
+public class LoginBean {
 	
 
     @NotEmpty

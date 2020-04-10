@@ -1,14 +1,14 @@
 package com.jsf.managedbean;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -30,8 +30,12 @@ public class BenutzerManagmentBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+    @Inject
+    private ExternalContext externalContext;
+    
 	@Inject
 	QueryService quService;
+	
 	@Inject
 	PersistenceService persistenceService;
 	
@@ -41,6 +45,22 @@ public class BenutzerManagmentBean implements Serializable{
 	private List<Benutzer> selectedBenutzers;
 	
 	private Benutzer benuter;
+	private Long id; // For delete benuzter by id
+	
+
+	
+	private boolean privilegiertByBenutzer;
+	
+	//Check is Benutzer have Privilegiert
+	private boolean findPrivilegiertByName() {
+		String benutzerNameLogged = getBenuter().getName();
+		Benutzer benutzer = quService.findBenuztezrByName(benutzerNameLogged);
+		if(benutzer.isPrivilegt()) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 
 	public Benutzer getBenuter() {
 		return benuter;
@@ -66,13 +86,31 @@ public class BenutzerManagmentBean implements Serializable{
 		this.selectedBenutzers = selectedBenutzers;
 	}
 	
+	public void indexPage() {
+		   try {
+			externalContext.redirect(externalContext.getRequestContextPath() + "/app/index.xhtml");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void auflistenPage() {
+		   try {
+			externalContext.redirect(externalContext.getRequestContextPath() + "/app/auflisten.xhtml");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
     public void onRowSelect(SelectEvent event) {
         FacesMessage msg = new FacesMessage("Benutzer Selected");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
  
     public void onRowUnselect(UnselectEvent event) {
-        FacesMessage msg = new FacesMessage("Car Unselected");
+        FacesMessage msg = new FacesMessage("Benutzer Unselected");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
     
@@ -90,7 +128,7 @@ public class BenutzerManagmentBean implements Serializable{
 		this.selectedBenutzer = selectedBenutzer;
 	}
 	
-	private Long id;
+
 
 	public Long getId() {
 		return id;
@@ -98,6 +136,10 @@ public class BenutzerManagmentBean implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public boolean isPrivilegiertByBenutzer() {
+		return privilegiertByBenutzer = findPrivilegiertByName();
 	}
 
 }
