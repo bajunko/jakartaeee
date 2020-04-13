@@ -4,39 +4,45 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <f:view>
-	<h:head>
-		<h:outputStylesheet>
-            h3 {
-                text-align: center;
-            }
-        </h:outputStylesheet>
+<p:panel id="Auflisten" header="Auflisten"  style="margin-bottom:20px">
+	<h:head >
+	 <div id="header" class="header">   
+		<h:outputStylesheet name="/css/design.css" />
+
+          
+        <p>Logged-in Benutzername :#{request.userPrincipal.name}</p>
+        </div>
+        
 	</h:head>
 	<h:body>
 		<p:outputPanel id="panelAuflisten">
 			<div class="ui-g">
 				<div class="ui-g-4" />
 				<div class="ui-g-4">
-					<h3>Auflisten Benutzers</h3>
 
 					<h:form id="userTable">
 						<p:messages id="messages" globalOnly="true" />
 
 						<p:dataTable id="tableBenutzer" var="benutzer"
 							value="#{benutzerManagmentBean.benutzerList}">
-							<p:column headerText="Id">
-								<h:outputText value="#{benutzer.id}" />
-							</p:column>
+							
+							<f:facet name="header">
+                                  Auflisten Benutzers
+                            </f:facet>
+<!-- 							<p:column headerText="Id" styleClass="tableRowEdit"> -->
+<!-- 								<h:outputText value="#{benutzer.id}" /> -->
+<!-- 							</p:column> -->
 
-							<p:column headerText="Name">
+							<p:column headerText="Name" styleClass="tableRowEdit" >
 								<h:outputText value="#{benutzer.name}" />
 							</p:column>
 
-							<p:column headerText="Privilegiert">
+							<p:column headerText="Privilegiert" styleClass="tableRowEdit">
 								<h:outputText value="#{benutzer.privilegt}" />
 							</p:column>
-							<p:column style="text-align: center">
+							<p:column headerText="Löschen" styleClass="tableRowEdit">
 								<p:commandButton update="tableBenutzer"
-									oncomplete="PF('benutzerDialog').show()" icon="pi pi-"
+									oncomplete="PF('benutzerDialog').show()" icon="pi pi-trash"
 									value="Löschen" title="Löschen" rendered="#{benutzerManagmentBean.privilegiertByBenutzer}">
 									<f:setPropertyActionListener value="#{benutzer.id}"
 										target="#{benutzerManagmentBean.id}" />
@@ -60,5 +66,6 @@
 			</div>
 		</p:outputPanel>
 	</h:body>
+</p:panel>	
 </f:view>
 </html>

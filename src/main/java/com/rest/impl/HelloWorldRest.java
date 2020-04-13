@@ -15,7 +15,7 @@ public class HelloWorldRest {
     public JsonObject greet(@PathParam("name") String name) {
 
         return Json.createObjectBuilder().add("name", name)
-                .add("greeting", "Hello, " + name)
+                .add("greeting", "Hallo Herr, " + name)
                 .add("message", "Hello from Jakarta EE!").build();
     }
 }

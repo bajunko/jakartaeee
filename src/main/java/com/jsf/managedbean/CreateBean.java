@@ -59,7 +59,17 @@ public class CreateBean {
     	
     	ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
     	try {
-			context.redirect(context.getRequestContextPath() + "/app/create.xhtml");
+			context.redirect(context.getRequestContextPath() + "/create.xhtml");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+    }
+    
+    public void createPageFromUser() {
+    	
+    	ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+    	try {
+			context.redirect(context.getRequestContextPath() + "/app/createFromUser.xhtml");
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -94,6 +104,24 @@ public class CreateBean {
               
         
     }
+    
+    public void createFromUser() throws IOException {
+
+        
+	       Benutzer benutzer = new Benutzer();
+	       benutzer.setName(getBenutzername());	 
+	       benutzer.setPasswort(getPasswort());
+	       benutzer.setPrivilegt(isPrivilegt());
+		persistenceService.saveBenutzer(benutzer);
+	      
+		// Ako je uspjeno kreiran ondnda prikazati poruku
+         facesContext.addMessage(null,
+                 new FacesMessage(FacesMessage.SEVERITY_INFO, "Benutzer erstellt", null));
+         externalContext.redirect(externalContext.getRequestContextPath() + "/app/index.xhtml");
+    
+       
+ 
+}    
     
     private AuthenticationStatus continueAuthentication() {
         return securityContext.authenticate(

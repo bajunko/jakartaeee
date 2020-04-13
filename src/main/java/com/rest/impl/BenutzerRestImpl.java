@@ -18,25 +18,21 @@ import com.entity.Benutzer;
 import com.service.PersistenceService;
 import com.service.QueryService;
 
+
 @Path("benutzer")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class BenutzerRestImpl{
 
 
-    //GET
-    //POST
-    //PUT
-    //DELETE
-
     @Inject
     private PersistenceService persistenceService;
 
     @Inject
     private QueryService queryService;
+    
 
-
-    @Path("create") //api/v1/user/create -TodoUser(Json) - POST
+    @Path("create")
     @POST
     public Response createTodoUser(@NotNull @Valid Benutzer benutzer) {
 
@@ -55,47 +51,21 @@ public class BenutzerRestImpl{
 
         return Response.ok(persistenceService.deleteBenutzer(id)).build();
     }
-//
-//
-//    @GET
-//    @Path("find/{email}") // /api/v1/user/find/{email}/users/{age}
-////    @Consumes(MediaType.APPLICATION_JSON)
-////    @Produces(MediaType.APPLICATION_JSON)
-//    public TodoUser findTodoUserByEmail(@NotNull @PathParam("email") String email) {
-//
-//        return queryService.findTodoUserByEmail(email);
-//    }
-//
-//
-//    @GET
-//    @Path("query") // /api/v1/user/query?email=bla@bla.com
-////    @Consumes(MediaType.APPLICATION_JSON)
-////    @Produces(MediaType.APPLICATION_JSON)
-//    public TodoUser findTodoUserByEmailQueryParam(@NotNull @QueryParam("email") String email) {
-//
-//        return queryService.findTodoUserByEmail(email);
-//    }
-//
-//
-//    @GET
-//    @Path("search")
-//    public Response searchTodoUserByName(@NotNull @QueryParam("name") String name) {
-//
-//        return Response.ok(queryService.findTodoUsersByName(name)).build();
-//    }
-//
-//    @GET
-//    @Path("count")
-//    public Response countTodoUserByEmail(@QueryParam("email") @NotNull String email) {
-//
-//        return Response.ok(queryService.countTodoUserByEmail(email)).build();
-//    }
-
+    
     @GET
-    @Path("list")
+    @Path("users")
     public Response listAllTodoUsers() {
         return Response.ok(queryService.findAllBenutzer()).build();
     }
+    
+    
+    @GET
+    @Path("time")
+    public Response time() {
+    	
+        return Response.ok(queryService.findAllBenutzer()).build();
+    }
+    
 
     
 }

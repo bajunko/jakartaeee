@@ -5,18 +5,19 @@
       xmlns:p="http://primefaces.org/ui">
 <f:view>
     <h:head>
-        <h:outputStylesheet>
-            h3 {
-                text-align: center;
-            }
-        </h:outputStylesheet>
+        <h:outputStylesheet name="/css/design.css" />
+         <title>Eine Frage der Zeit</title>
+          <p:panel id="Willkommen" header="Willkommen"  style="margin-bottom:20px">
+            <h:outputText>Willkommen Eine Frage der Zeit</h:outputText>
+          </p:panel>
+         
     </h:head>
     <h:body>
         <p:outputPanel>
             <div class="ui-g">
                 <div class="ui-g-4"/>
                 <div class="ui-g-4">
-                    <h3>Login</h3>
+                    <h3>Login Seite</h3>
 
                     <h:form id="login">
                         <p:messages id="messages" globalOnly="true"/>

@@ -4,23 +4,36 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <f:view>
+<p:panel id="Home" header="Welcome to the application!"  style="margin-bottom:20px" styleClass=".column.middle">
     <h:head>
-    <p:outputLabel>Welcome to the application!</p:outputLabel>
+                <h:outputText value="Willkommen Eine Frage der Zeit" style="font-size: 25px; font-weight: bold; text-align: left;"> </h:outputText>
+    <div id="header" class="header">    
+        <h:outputStylesheet name="/css/design.css" />
+            <title>Eine Frage der Zeit</title>
+       
 
-        <p>Logged-in as #{request.userPrincipal.name}</p>
+       
+     <p>Logged-in Benutzername : #{request.userPrincipal.name}</p>
+     </div>     
     </h:head>
+    
     <h:body>
-        
-        
+    <div class="ui-g">
+                <div class="ui-g-4"/>
+                <div class="ui-g-4">
+   <p class="ptext"> Die aktuelle Zeit des Servers sehen um sie mit seiner Zeitzone vergleichen zu können</p> 
+    
     <h:form id="indexForm">
     
-            <p:commandButton id="login" update="@form" value="Login" action="#{loginBean.submit}"/>
-            <p:commandButton id="erstellenFromUser" process="@this" value="Erstellen" action="#{createBean.createPage}" />
+             <p:messages id="messages" globalOnly="true" sticky="true"/>
+    
+            <p:commandButton id="erstellenFromUser" update="@form" process="@this" value="Erstellen" action="#{createBean.createPageFromUser}" />
             <p:commandButton id="auflisten" process="@this" value="Auflisten" action="#{benutzerManagmentBean.auflistenPage}" />
             <p:commandButton value="Logout" action="#{logoutBean.submit}"/>
-         </h:form>    
-
-
+         </h:form> 
+         </div>
+      </div>      
     </h:body>
+   </p:panel> 
 </f:view>
 </html>

@@ -35,14 +35,14 @@ public class CustomInMemoryIdentityStore implements IdentityStore {
     @Override
     public CredentialValidationResult validate(Credential credential) {
     	
-    	List<Benutzer> listaUsera = new ArrayList<Benutzer>();
-    	Benutzer b = new Benutzer();
-    	b.setName("Ante");
-    	b.setPasswort("123456789");
-    	Benutzer b1 = new Benutzer();
-    	b1.setName("Mate");
-    	b1.setPasswort("Mate1234");
-    	listaUsera.add(b1);
+//    	List<Benutzer> listaUsera = new ArrayList<Benutzer>();
+//    	Benutzer b = new Benutzer();
+//    	b.setName("Ante");
+//    	b.setPasswort("123456789");
+//    	Benutzer b1 = new Benutzer();
+//    	b1.setName("Mate");
+//    	b1.setPasswort("Mate1234");
+//    	listaUsera.add(b1);
 
         UsernamePasswordCredential login = (UsernamePasswordCredential) credential;
         
@@ -59,7 +59,7 @@ public class CustomInMemoryIdentityStore implements IdentityStore {
       
       if(autentciran) {
     	  benuterManagment.setBenuter(provjeri);
-    	  return new CredentialValidationResult(provjeri.getName(), new HashSet<>(Arrays.asList("USER")));
+    	  return new CredentialValidationResult(provjeri.getName(), new HashSet<>(Arrays.asList("USER","a")));
       }else {
     	  new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login failed", null);
     	  return CredentialValidationResult.NOT_VALIDATED_RESULT;
