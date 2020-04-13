@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+head{
+ background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;	
+}
+
+
+
+/* Style the header */
+.header {
+  background-color: #f1f1f1;
+  color:black;
+  padding: 20px;
+  text-align: right;
+  font-size: 15px;
+  font-weight: bold;
+  
+}
+
+
+.value {
+        font-weight: bold;
+}
+     
+.ui-datatable {
+        margin-bottom: 25px
+}
+     
+.ui-datatable .ui-datatable-footer {
+        text-align:left;
+}
+     
+.ui-datalist ul {
+        padding: 0 0 0 10px;
+        margin: 5px 0;
+}
+     
+.ui-datatable .ui-button-icon-only .ui-button-text {
+        padding: 0;
+        line-height: 1.2;
+}
+
+.ui-column-title {
+      font-weight: bold;
+      font-size: 20px;
+}
+    
+.tableRowEdit {
+  width: 100%;
+  font-weight: bold;
+  font-size: 15px;
+}    
+
+.ptext{
+  font-weight: bold;
+  font-size: 15px;
+}    

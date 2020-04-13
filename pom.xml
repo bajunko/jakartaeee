@@ -7,9 +7,11 @@
     <groupId>com.example</groupId>
     <artifactId>jakartaee8-starter</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
     <name>jakartaee8-starter</name>
     <description>A Jakarte EE Projket</description>
+    
+    
 
     <properties>
         <!-- Global Maven settings -->
@@ -550,17 +552,13 @@
             </plugin>
         </plugins>
     </reporting>
-    <issueManagement>
-        <system>Github Issues</system>
-        <url>https://github.com/hantsy/jakartaee8-starter/issues</url>
-    </issueManagement>
-    <ciManagement>
-        <system>Github Actions</system>
-        <url>https://github.com/hantsy/jakartaee8-starter/actions</url>
-    </ciManagement>
-    <scm>
-        <url>https://github.com/hantsy/jakartaee8-starter</url>
-        <connection>scm:git:https://github.com/hantsy/jakartaee8-starter</connection>
-        <developerConnection>scm:git:https://github.com/hantsy/jakartaee8-starter</developerConnection>
+      <scm>
+        <url>https://github.com/bajunko/jakartaeee.git</url>
+        <connection>scm:git:https://github.com/bajunko/jakartaeee.git</connection>
+        <developerConnection>scm:https://github.com/bajunko/jakartaeee.git</developerConnection>
     </scm>
+      <modules>
+      	<module>jaxrs</module>
+      	<module>jsfweb</module>
+      </modules>
 </project>

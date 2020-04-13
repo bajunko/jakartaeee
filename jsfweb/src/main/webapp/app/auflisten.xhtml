@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<f:view>
+<p:panel id="Auflisten" header="Auflisten"  style="margin-bottom:20px">
+	<h:head >
+	 <div id="header" class="header">   
+		<h:outputStylesheet name="/css/design.css" />
+
+          
+        <p>Logged-in Benutzername :#{request.userPrincipal.name}</p>
+        </div>
+        
+	</h:head>
+	<h:body>
+		<p:outputPanel id="panelAuflisten">
+			<div class="ui-g">
+				<div class="ui-g-4" />
+				<div class="ui-g-4">
+
+					<h:form id="userTable">
+						<p:messages id="messages" globalOnly="true" />
+
+						<p:dataTable id="tableBenutzer" var="benutzer"
+							value="#{benutzerManagmentBean.benutzerList}">
+							
+							<f:facet name="header">
+                                  Auflisten Benutzers
+                            </f:facet>
+<!-- 							<p:column headerText="Id" styleClass="tableRowEdit"> -->
+<!-- 								<h:outputText value="#{benutzer.id}" /> -->
+<!-- 							</p:column> -->
+
+							<p:column headerText="Name" styleClass="tableRowEdit" >
+								<h:outputText value="#{benutzer.name}" />
+							</p:column>
+
+							<p:column headerText="Privilegiert" styleClass="tableRowEdit">
+								<h:outputText value="#{benutzer.privilegt}" />
+							</p:column>
+							<p:column headerText="Löschen" styleClass="tableRowEdit">
+								<p:commandButton update="tableBenutzer"
+									oncomplete="PF('benutzerDialog').show()" icon="pi pi-trash"
+									value="Löschen" title="Löschen" rendered="#{benutzerManagmentBean.privilegiertByBenutzer}">
+									<f:setPropertyActionListener value="#{benutzer.id}"
+										target="#{benutzerManagmentBean.id}" />
+								</p:commandButton>
+							</p:column>
+						</p:dataTable>
+						<p:commandButton id="back" process="@this" value="Zurück zu Home Page" action="#{benutzerManagmentBean.indexPage}" />
+					</h:form>
+					<p:dialog  id="deleteDialog" header="Benutzer Löschen" widgetVar="benutzerDialog"
+						modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+						<p:outputPanel id="benutzerDetail" style="text-align:center;">
+                               Jeste li sigurni da zelite izbrisati?
+                            <p:commandButton value="Löschen"
+								action="#{benutzerManagmentBean.deleteSelctedBenutzer(benutzer.id)}"
+								update="userTable"
+							    oncomplete="PF('benutzerDialog').hide()">
+							</p:commandButton>
+						</p:outputPanel>
+					</p:dialog>
+				</div>
+			</div>
+		</p:outputPanel>
+	</h:body>
+</p:panel>	
+</f:view>
+</html>

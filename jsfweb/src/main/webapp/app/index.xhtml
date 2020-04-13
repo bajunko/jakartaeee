@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+<p:panel id="Home" header="Welcome to the application!"  style="margin-bottom:20px" styleClass=".column.middle">
+    <h:head>
+                <h:outputText value="Willkommen Eine Frage der Zeit" style="font-size: 25px; font-weight: bold; text-align: left;"> </h:outputText>
+    <div id="header" class="header">    
+        <h:outputStylesheet name="/css/design.css" />
+            <title>Eine Frage der Zeit</title>
+       
+
+       
+     <p>Logged-in Benutzername : #{request.userPrincipal.name}</p>
+     </div>     
+    </h:head>
+    
+    <h:body>
+    <div class="ui-g">
+                <div class="ui-g-4"/>
+                <div class="ui-g-4">
+   <p class="ptext"> Die aktuelle Zeit des Servers sehen um sie mit seiner Zeitzone vergleichen zu können</p> 
+    <h:outputText
+     value="#{benutzerManagmentBean.restTimeZone}" />
+     
+     <h:form>
+        <p:outputLabel for="timezone" value="Geben Sie Zeitzone ein"/>
+        <p:inputText id="timezone" value="#{benutzerManagmentBean.inputTimeZone}"/>
+        <p:message for="timezone"/>
+        
+        
+        
+        <p:commandButton id="vergleichen" process="@form" update="textVergleichenId" value="Vergleichen Zeitzone" action="#{benutzerManagmentBean.vergleichenTimeZone}" />
+         <div id="vergelichDiv" class="ptext">
+            <h:outputText id="textVergleichenId" value="#{benutzerManagmentBean.textVergleichen}" />
+            </div>
+     </h:form>
+    <h:form id="indexForm">
+    
+             <p:messages id="messages" globalOnly="true" sticky="true"/>
+    
+            <p:commandButton id="erstellenFromUser" update="@form" process="@this" value="Erstellen" action="#{createBean.createPageFromUser}" />
+            <p:commandButton id="auflisten" process="@this" value="Auflisten" action="#{benutzerManagmentBean.auflistenPage}" />
+            <p:commandButton value="Logout" action="#{logoutBean.submit}"/>
+         </h:form> 
+           
+         </div>
+      </div>      
+    </h:body>
+   </p:panel> 
+</f:view>
+</html>

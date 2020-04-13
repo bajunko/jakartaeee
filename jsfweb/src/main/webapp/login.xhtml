@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+    <h:head>
+        <h:outputStylesheet name="/css/design.css" />
+         <title>Eine Frage der Zeit</title>
+          <p:panel id="Willkommen" header="Willkommen"  style="margin-bottom:20px">
+            <h:outputText>Willkommen Eine Frage der Zeit</h:outputText>
+          </p:panel>
+         
+    </h:head>
+    <h:body>
+        <p:outputPanel>
+            <div class="ui-g">
+                <div class="ui-g-4"/>
+                <div class="ui-g-4">
+                    <h3>Login Seite</h3>
+
+                    <h:form id="login">
+                        <p:messages id="messages" globalOnly="true"/>
+
+                        <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
+
+                            <p:outputLabel for="name" value="Benutzername"/>
+                            <p:inputText id="name" value="#{loginBean.name}"/>
+                            <p:message for="name"/>
+
+                            <p:outputLabel for="password" value="Passwort"/>
+                            <p:inputText type="password" id="password" value="#{loginBean.password}"/>
+                            <p:message for="password"/>
+
+                            <p:commandButton id="submit" update="@form" value="Login" action="#{loginBean.submit}"/>
+                            <p:commandButton id="erstellen" process="@this" value="Erstellen" action="#{createBean.createPage}" />
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+            </div>
+        </p:outputPanel>
+    </h:body>
+</f:view>
+</html>

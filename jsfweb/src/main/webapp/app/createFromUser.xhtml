@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+<p:panel id="CreateFromUser" header="Erstellen Benutzer aus Logged Benutzer"  style="margin-bottom:20px"/>
+	<h:head >
+	 <div id="header" class="header">   
+		<h:outputStylesheet name="/css/design.css" />
+
+          
+        <p>Logged-in Benutzername :#{request.userPrincipal.name}</p>
+        </div>
+        
+	</h:head>
+    <h:body>
+        <p:outputPanel>
+            <div class="ui-g">
+                <div class="ui-g-4"/>
+                <div class="ui-g-4">
+                    <h3>Erstellen Benutzer aus Logged Benutzer</h3>
+
+                    <h:form id="cerateFormUser">
+                        <p:messages id="messages" globalOnly="true" sticky="true"/>
+
+                        <h:panelGrid columns="3" cellpadding="5" style="margin: 0 auto;">
+
+                            <p:outputLabel for="benutzername" value="Benutzername"/>
+                            <p:inputText id="benutzername" value="#{createBean.benutzername}"/>
+                            <p:message for="benutzername"/>
+
+                            <p:outputLabel for="passwort" value="Passwort"/>
+                            <p:inputText type="password" id="passwort" value="#{createBean.passwort}"/>
+                            <p:message for="passwort"/>
+                            
+                            <p:outputLabel for="privilegiert" value="Privilegiert"/>
+                            <p:selectBooleanCheckbox id="privilegiert" value="#{createBean.privilegt}" />
+                            <p:message for="privilegiert"/>                            
+
+                            <p:commandButton id="cerate" update="@form" value="Erstellen" action="#{createBean.create}"/>
+                            <p:commandButton id="back2" process="@this" value="Zurück zu Home Page" action="#{benutzerManagmentBean.indexPage}" />
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+            </div>
+        </p:outputPanel>
+    </h:body>
+     
+</f:view>
+</html>
