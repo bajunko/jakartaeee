@@ -22,7 +22,21 @@
                 <div class="ui-g-4"/>
                 <div class="ui-g-4">
    <p class="ptext"> Die aktuelle Zeit des Servers sehen um sie mit seiner Zeitzone vergleichen zu können</p> 
-    
+    <h:outputText
+     value="#{benutzerManagmentBean.restTimeZone}" />
+     
+     <h:form>
+        <p:outputLabel for="timezone" value="Geben Sie Zeitzone ein"/>
+        <p:inputText id="timezone" value="#{benutzerManagmentBean.inputTimeZone}"/>
+        <p:message for="timezone"/>
+        
+        
+        
+        <p:commandButton id="vergleichen" process="@form" update="textVergleichenId" value="Vergleichen Zeitzone" action="#{benutzerManagmentBean.vergleichenTimeZone}" />
+         <div id="vergelichDiv" class="ptext">
+            <h:outputText id="textVergleichenId" value="#{benutzerManagmentBean.textVergleichen}" />
+            </div>
+     </h:form>
     <h:form id="indexForm">
     
              <p:messages id="messages" globalOnly="true" sticky="true"/>
@@ -31,6 +45,7 @@
             <p:commandButton id="auflisten" process="@this" value="Auflisten" action="#{benutzerManagmentBean.auflistenPage}" />
             <p:commandButton value="Logout" action="#{logoutBean.submit}"/>
          </h:form> 
+           
          </div>
       </div>      
     </h:body>

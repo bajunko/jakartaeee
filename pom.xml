@@ -153,7 +153,21 @@
           <artifactId>all-themes</artifactId>
           <version>1.0.10</version>
         </dependency>
-            
+         <dependency>
+            <groupId>org.glassfish.jersey.containers</groupId>
+            <artifactId>jersey-container-servlet</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -243,6 +257,7 @@
             <artifactId>primefaces</artifactId>
             <version>7.0</version>
         </dependency>
+
     
     </dependencies>
     <build>

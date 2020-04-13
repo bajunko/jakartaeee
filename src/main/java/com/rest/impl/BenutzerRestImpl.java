@@ -60,10 +60,12 @@ public class BenutzerRestImpl{
     
     
     @GET
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
     @Path("time")
     public Response time() {
     	
-        return Response.ok(queryService.findAllBenutzer()).build();
+        return Response.ok(queryService.getTimeZoneId()).build();
     }
     
 

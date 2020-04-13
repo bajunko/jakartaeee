@@ -11,6 +11,10 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
@@ -50,6 +54,8 @@ public class BenutzerManagmentBean implements Serializable{
 
 	
 	private boolean privilegiertByBenutzer;
+	private String inputTimeZone;
+	private String textVergleichen;
 	
 	//Check is Benutzer have Privilegiert
 	private boolean findPrivilegiertByName() {
@@ -104,6 +110,38 @@ public class BenutzerManagmentBean implements Serializable{
 		}
 	}
 	
+	
+//Simple REST client	
+	
+  private static final String REST_URI 
+    = "http://localhost:8080/jakartaee8-starter/api/benutzer/time";
+
+  private Client client = ClientBuilder.newClient();
+
+  public Response getRestTime() {
+      return client
+        .target(REST_URI)
+        .request(MediaType.TEXT_PLAIN).get();
+        
+  }
+  
+  public String getRestTimeZone() {
+	 return "Aktuelle Zeit des Servres: " + getRestTime().readEntity(String.class);
+  }
+  
+  public void vergleichenTimeZone() {
+	  
+	  if(getRestTimeZone().contains(getInputTimeZone())) {
+                  setTextVergleichen("Sie befinden sich in derselben Zeitzone");
+	  }else {
+		  setTextVergleichen("Sie befinden nicht sich in derselben Zeitzone");
+	  }
+	  
+	  
+  }
+	
+	
+	
     public void onRowSelect(SelectEvent event) {
         FacesMessage msg = new FacesMessage("Benutzer Selected");
         FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -140,6 +178,22 @@ public class BenutzerManagmentBean implements Serializable{
 
 	public boolean isPrivilegiertByBenutzer() {
 		return privilegiertByBenutzer = findPrivilegiertByName();
+	}
+
+	public String getInputTimeZone() {
+		return inputTimeZone;
+	}
+
+	public void setInputTimeZone(String inputTimeZone) {
+		this.inputTimeZone = inputTimeZone;
+	}
+
+	public String getTextVergleichen() {
+		return textVergleichen;
+	}
+
+	public void setTextVergleichen(String textVergleichen) {
+		this.textVergleichen = textVergleichen;
 	}
 
 }

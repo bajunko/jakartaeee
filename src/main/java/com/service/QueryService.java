@@ -1,6 +1,7 @@
 package com.service;
 
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -19,6 +20,10 @@ import com.entity.Benutzer;
 //databaseName = "public",    // set the property
 //user = "postgres",
 //password = "bajunko13")
+/**
+ * @author Ante
+ *
+ */
 @Stateless
 public class QueryService {
 	
@@ -63,7 +68,19 @@ public class QueryService {
     public List<Benutzer> findAllBenutzer() {
 
         return entityManager.createNamedQuery(Benutzer.FIND_ALL_BENUTZER, Benutzer.class).getResultList();
-    }    
+    }
+    
+    /**
+    * getTimeZoneID - return id for zone as String for example Europe/London 
+    * 
+    *
+    * @author  Ante Celic
+    * @version 1.0
+    * @since   
+    */
+    public String getTimeZoneId() {
+    	return TimeZone.getDefault().getID();
+    }
 
     
 
