@@ -8,9 +8,11 @@ import java.io.Serializable;
 
 @MappedSuperclass
 public abstract class AbstractEntity implements Serializable {
-    @Id
+   
+	private static final long serialVersionUID = 7271406442777781310L;
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    protected Long id; //primary key column of the database
+    protected Long id; 
 
 
 

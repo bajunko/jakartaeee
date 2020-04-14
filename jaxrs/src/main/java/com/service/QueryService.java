@@ -12,14 +12,7 @@ import javax.persistence.PersistenceContext;
 
 import com.entity.Benutzer;
 
-//@DataSourceDefinition(
-//name = "java:comp/DefaultDataSource",
-//className = "org.postgresql.ds.PGSimpleDataSource",
-//serverName = "localhost",  // set the property
-//portNumber = 5432,        // set the property
-//databaseName = "public",    // set the property
-//user = "postgres",
-//password = "bajunko13")
+
 /**
  * @author Ante
  *
@@ -31,14 +24,6 @@ public class QueryService {
     @PersistenceContext(unitName = "myPU")
     EntityManager entityManager;
 
-    @Inject
-    private MySession mySession;
-    
-//    @Inject
-//    private SecurityUtil securityUtil;
-    
-    
-    
     
     public Benutzer findBenuztezrByName(String name) {
 
@@ -91,15 +76,4 @@ public class QueryService {
         return resultList;
     }
     
-//    public boolean authenticateUser(String name, String plainTextPassword) {
-//
-//        Benutzer benutzer = findBenuztezrByName(name);
-//
-//        if (benutzer != null) {
-//            return securityUtil.passwordsMatch(benutzer.getPasswort(), benutzer.getSalt(), plainTextPassword);
-//        }
-//        return false;
-//
-//    }
-
 }

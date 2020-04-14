@@ -57,6 +57,7 @@ public class BenutzerManagmentBean implements Serializable{
 	private String inputTimeZone;
 	private String textVergleichen;
 	
+	
 	//Check is Benutzer have Privilegiert
 	private boolean findPrivilegiertByName() {
 		String benutzerNameLogged = getBenuter().getName();
@@ -131,7 +132,7 @@ public class BenutzerManagmentBean implements Serializable{
   
   public void vergleichenTimeZone() {
 	  
-	  if(getRestTimeZone().contains(getInputTimeZone())) {
+	  if(getRestTime().readEntity(String.class).equals(getInputTimeZone())) {
                   setTextVergleichen("Sie befinden sich in derselben Zeitzone");
 	  }else {
 		  setTextVergleichen("Sie befinden nicht sich in derselben Zeitzone");

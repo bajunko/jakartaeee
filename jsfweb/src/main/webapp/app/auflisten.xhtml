@@ -38,7 +38,8 @@
 							</p:column>
 
 							<p:column headerText="Privilegiert" styleClass="tableRowEdit">
-								<h:outputText value="#{benutzer.privilegt}" />
+								<h:outputText value="JA" rendered="#{benutzer.privilegt}" />
+								<h:outputText value="NEIN" rendered="#{!benutzer.privilegt}" />
 							</p:column>
 							<p:column headerText="Löschen" styleClass="tableRowEdit">
 								<p:commandButton update="tableBenutzer"

@@ -30,19 +30,14 @@ public class Benutzer extends AbstractEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Transient
-    private String salt;
-	
     @Column(length = 100)
     @NotEmpty(message = "A name must be set")
-    private String name; //varchar 255 user@domain.com
+    private String name; 
 
 
     @NotNull(message = "Password cannot be empty")
     @Size(min = 8, max = 100, message = "Password must be a min of 8 and max of 100 characters")
-    //@Pattern(regexp = "", message = "Password must have at least one upper case, " +
-    //        "one lower case, a digit and must contain at least one of $%&#!")
-    private String passwort; //#%AdhhddS87987fjvjof
+    private String passwort; 
     
     @NotNull(message = "Privilegt must be choose")
     private boolean privilegt;
@@ -70,15 +65,5 @@ public class Benutzer extends AbstractEntity {
 	public void setPrivilegt(boolean privilegt) {
 		this.privilegt = privilegt;
 	}
-
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
-	
-	
 
 }

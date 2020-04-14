@@ -13,8 +13,8 @@ import javax.security.enterprise.identitystore.IdentityStore;
 @ApplicationScoped
 public class TestIdentityStore implements IdentityStore {
     public CredentialValidationResult validate(UsernamePasswordCredential usernamePasswordCredential) {
-        if (usernamePasswordCredential.compareTo("test", "secret")) {
-            return new CredentialValidationResult("test", new HashSet<>(asList("a", "b")));
+        if (usernamePasswordCredential.compareTo("zeit", "zone1234")) {
+            return new CredentialValidationResult("zeit", new HashSet<>(asList("a", "b")));
         }
         return INVALID_RESULT;
     }
